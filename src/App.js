@@ -27,7 +27,8 @@ class App extends React.Component {
 	}
 	changeTheState = () => {
 		this.setState(
-			() => ({ cities: ['Mumbai', 'Patna', 'Amritsar', 'Dehli'] }) // Best Practice to use callback function in the setState too		)
+			(preState) => ({ cities: ['Mumbai', 'Patna', 'Amritsar', 'Dehli'] }) // Best Practice to use callback function in the setState too
+		)
 	}
 	render() {
 		return (
