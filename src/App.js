@@ -1,5 +1,6 @@
 import React from 'react';
 // import './App.css';
+import PropTypes from 'prop-types';
 
 /* 
 *	Impotant Note:
@@ -7,6 +8,9 @@ import React from 'react';
 */
 
 class Cities extends React.Component {
+	static propTypes = {
+		pakCities: PropTypes.array
+	}
 	render() {
 		return (
 			<div>
