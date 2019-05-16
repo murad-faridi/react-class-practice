@@ -26,19 +26,19 @@ class Cities extends React.Component {
 }
 
 class App extends React.Component {
-	state = {
-		cities: ['Faisalabad', 'Lahore', 'Karachi', 'Islamabad', 'Quetta', 'Peshawer', 'Faisalabad']
-	}
-	changeTheState = () => {
-		this.setState(
-			(preState) => ({ cities: ['Mumbai', 'Patna', 'Amritsar', 'Dehli'] }) // Best Practice to use callback function in the setState too
-		)
-	}
+	// state = {
+	// 	cities: ['Faisalabad', 'Lahore', 'Karachi', 'Islamabad', 'Quetta', 'Peshawer', 'Faisalabad']
+	// }
+	// changeTheState = () => {
+	// 	this.setState(
+	// 		(preState) => ({ cities: ['Mumbai', 'Patna', 'Amritsar', 'Dehli'] }) // Best Practice to use callback function in the setState too
+	// 	)
+	// }
 	render() {
 		return (
 			<div>
 				{/* <Cities pakCities={this.state.cities} changeTheState={this.changeTheState} /> */}
-				{<Form />}
+				{<Components />}
 			</div>
 		);
 	}
@@ -67,3 +67,41 @@ class Form extends React.Component {
 }
 
 export default App;
+
+class Components extends React.Component {
+	state = { number: 0 }
+
+	componentWillUnmount() {
+		console.log("bye bye")
+	}
+
+	componentDidMount() {
+		setInterval(() => {
+			this.setState(() => ({
+				number: Math.ceil(Math.random() * 1000)
+			}))
+		}, 2000);
+	}
+	render() {
+		return (
+			<ChildComponent num={this.state.number}/>
+		)
+	}
+}
+
+class ChildComponent extends React.Component {
+	state = { text: this.props.num }
+
+	static getDerivedStateFromProps(props) {
+		return ({
+			text: props.num
+		})
+	}
+	render() {
+		return (
+			<div>
+				<h1>The number is {this.state.text}</h1>
+			</div>
+		)
+	}
+}
