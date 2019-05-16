@@ -37,7 +37,30 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Cities pakCities={this.state.cities} changeTheState={this.changeTheState} />
+				{/* <Cities pakCities={this.state.cities} changeTheState={this.changeTheState} /> */}
+				{<Form />}
+			</div>
+		);
+	}
+}
+
+class Form extends React.Component {
+	state = { first_name: "", last_name: "" }
+	
+	whenChange = (event) => {
+		console.log(event.target)
+		const {name, value} = event.target
+		this.setState({ [name]: value })
+	}
+	render() {
+		return (
+			<div className="col-sm-4">
+				<div className="form-group mt-4">
+					<input type="text" name="first_name" value={this.state.first_name} onChange={this.whenChange} placeholder="First Name" className="form-control" />
+					<p>{this.state.first_name}</p>
+					<input type="text" name="last_name" value={this.state.last_name} onChange={this.whenChange} placeholder="Last Name" className="form-control" />
+					<p>{this.state.last_name}</p>
+				</div>
 			</div>
 		);
 	}
