@@ -26,19 +26,22 @@ class Cities extends React.Component {
 }
 
 class App extends React.Component {
-	// state = {
-	// 	cities: ['Faisalabad', 'Lahore', 'Karachi', 'Islamabad', 'Quetta', 'Peshawer', 'Faisalabad']
-	// }
-	// changeTheState = () => {
-	// 	this.setState(
-	// 		(preState) => ({ cities: ['Mumbai', 'Patna', 'Amritsar', 'Dehli'] }) // Best Practice to use callback function in the setState too
-	// 	)
-	// }
+	state = {
+		cities: ['Faisalabad', 'Lahore', 'Karachi', 'Islamabad', 'Quetta', 'Peshawer', 'Faisalabad']
+	}
+	changeTheState = () => {
+		this.setState(
+			(preState) => ({ cities: ['Mumbai', 'Patna', 'Amritsar', 'Dehli'] }) // Best Practice to use callback function in the setState too
+		)
+	}
 	render() {
 		return (
 			<div>
-				{/* <Cities pakCities={this.state.cities} changeTheState={this.changeTheState} /> */}
-				{<Components />}
+				<h1>LifeCycle Events</h1>
+				<Cities pakCities={this.state.cities} changeTheState={this.changeTheState} />
+				<hr />
+				<h1>onChange Event on Input</h1>
+				{<Form />}
 			</div>
 		);
 	}
